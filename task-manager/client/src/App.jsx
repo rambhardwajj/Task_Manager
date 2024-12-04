@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Login from './pages/Login'
 import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom'
+import Login from './pages/Login'
 import Dashboard from "./pages/Dashboard.jsx"
 import Tasks from "./pages/Tasks.jsx"
 import Users from "./pages/Users.jsx"
@@ -21,7 +21,7 @@ function Layout(){
       {/* <MobileSidebar /> */}
 
       <div className='flex-1 overflow-y-auto'>
-        <Navbar />
+        {/* <Navbar /> */}
 
         <div className='p-4 2xl:px-10'>
           {/* <Outlet /> */}
@@ -35,8 +35,6 @@ function Layout(){
 }
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <main className='w-full min-h-screen bg-[#f3f4f6]' >
       <Routes>
@@ -53,9 +51,8 @@ function App() {
         </Route>
 
         <Route path='/log-in' element={<Login/>} />
-
-        <Toaster richColors />
       </Routes>
+      <Toaster richColors />
     </main>
   )
 }
