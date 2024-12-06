@@ -7,7 +7,10 @@ import Button from '../components/Button';
 
 const Login = () => {
   const user = "";
-  const { register, handleSubmit, formState:{error},
+  const { 
+    register, 
+    handleSubmit, 
+    formState:{errors},
   } = useForm();
 
   const navigate = useNavigate();
@@ -51,12 +54,23 @@ const Login = () => {
                 Welcome back!
               </p>
               <p className='text-center text-base text-gray-700 '>
-                Keep all your credential safge.
+                Keep all your credential safe.
               </p>
             </div>
 
             <div className = 'flex flex-col gap-y-5'>
             <Textbox
+                placeholder='email@example.com'
+                type='email'
+                name='email'
+                label='Email Address'
+                className='w-full rounded-full'
+                register={register("email", {
+                  required: "Email Address is required!",
+                })}
+                error={errors.email ? errors.email.message : ""}
+              />
+              <Textbox
                 placeholder='your password'
                 type='password'
                 name='password'
@@ -65,7 +79,7 @@ const Login = () => {
                 register={register("password", {
                   required: "Password is required!",
                 })}
-                // error={errors.password ? errors.password.message : ""}
+                error={errors.password ? errors.password.message : ""}
               />
                <span className='text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer'>
                 Forget Password?
@@ -76,12 +90,9 @@ const Login = () => {
                 label='Submit'
                 className='w-full h-10 bg-blue-700 text-white rounded-full'
               />
-
             </div>
-
           </form>
         </div>
-
       </div>
     </div>  
   )
